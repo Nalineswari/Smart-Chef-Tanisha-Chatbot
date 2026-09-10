@@ -119,13 +119,13 @@ if st.button("🚀 Generate Healthy Recipe & Health Score", type="primary"):
         try:
             if input_method == "Upload Fridge Photo" and uploaded_image:
                 response = client.models.generate_content(
-                    model='gemini-2.5-flash',
+                    model='gemini-1.5-flash',
                     contents=[uploaded_image, system_instruction + "\nFirst, identify the leftover ingredients in the photo, then build the recipe."]
                 )
             else:
                 prompt = f"{system_instruction}\nLeftover Ingredients Provided: {ingredients_text}"
                 response = client.models.generate_content(
-                    model='gemini-2.5-flash',
+                    model='gemini-1.5-flash',
                     contents=prompt
                 )
             
