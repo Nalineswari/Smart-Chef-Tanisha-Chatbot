@@ -51,7 +51,7 @@ with col1:
         uploaded_file = st.file_uploader("Upload a photo of your fridge or pantry shelf:", type=["jpg", "png", "jpeg"])
         if uploaded_file:
             uploaded_image = Image.open(uploaded_file)
-            st.image(uploaded_image, caption="Uploaded Fridge Image", use_column_width=True)
+            st.image(uploaded_image, caption="Uploaded Fridge Image", use_container_width=True)
 
     st.subheader("⏳ Pantry Expiry Radar")
     expiring_items = st.text_input("Which items are expiring TODAY or TOMORROW? (Optional)", 
