@@ -9,12 +9,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Sidebar: Secure API Key Entry
-st.sidebar.title("🔐 Configuration")
-api_key = st.sidebar.text_input("Enter Gemini API Key", type="password")
+# Securely retrieve API Key from Streamlit Secrets or Sidebar fallback
+if "GEMINI_API_KEY" in st.secrets:
+    api_key = st.secrets["GEMINI_API_KEY"]
+else:
+    api_key = st.sidebar.text_input("Enter Gemini API Key", type="password")
 
 if not api_key:
-    st.info("👈 Please enter your Google Gemini API key in the sidebar to start!")
+    st.error("🔑 API Key missing! Please configure Streamlit Secrets.")
     st.stop()
 
 # Initialize Gemini Client
